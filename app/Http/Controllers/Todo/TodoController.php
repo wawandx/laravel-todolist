@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Todo;
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TodoController extends Controller
 {
@@ -20,6 +21,10 @@ class TodoController extends Controller
         } else {
             $data = Todo::orderBy('task', 'asc')->paginate($max_data);
         }
+        
+        //Log::critical("ini critical loh");
+        //Log::error("kalau ini error");
+
         return view('todo.app', compact('data'));
     }
 
